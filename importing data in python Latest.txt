@@ -1,0 +1,109 @@
+open a file // open('moby_dick.txt', 'r')  * can change the  r to read, a append , w to write or
+with open('moby_dick.txt') as :
+
+ 
+to close a file // file.close()
+
+to read a single line //  print(file.readline())
+
+
+NUMPY OPENINGS
+to open txt file in numpy // data = np.loadtxt(filename,delimiter=',', skiprows=1)  * skip rows is to jump text rows so numpy only deals with numbers , delimiters is the seperating value like commas or spaces '\t' is tab based
+
+to select certain columns // usecols[index]
+
+to change the datatype as its imported // data = np.loadtxt(filename,delimiter = ',' , dtype=str) *this will make the datatype a string
+
+to import data using different types //data = np.genfromtxt('titanic.csv', delimiter=',', names=True, dtype=None)  * names is how to tell if there is a header , 
+
+to import data using different types but has default dtypes as none // np.recfromcsv()
+
+PANDAS
+
+to read a csv // data = pd.read_csv(file,nrows=5,header=None)  *nrows is number of rows , header is if there is a headers
+
+to read a csv // data = pd.read_csv(file, sep='\t', comment='#', na_values='Nothing')  * comment takes characters that comments occur after in the file, which in this case is '#' . sep is like delimiter . na_values changes all values that are (Nan, NA) and changeas them to specified name.
+
+PICKLES
+ we must first import pickles
+opeining pickles //with open('data.pkl', 'rb') as file:
+    d = pickle.load(file)
+    print(type(file)) * rb is read only binary
+
+EXCEL
+
+
+to add the excel file // xls = pd.ExcelFile(file)
+to read the sheetnames // xls.sheet_names
+to read the specific sheet // df1 = xls.parse(sheetname) or xls.parse(index value of sheet)
+file = 'battledeath.xlsx'
+
+# Load spreadsheet: xl
+xls = pd.ExcelFile(file)  //we add the file to be readable in pandas
+
+# Print sheet names
+print(xls.sheet_names)  // 
+
+df1 = xls.parse(0, skiprows=1, names=['Country' ,'AAM due to War (2002)'])
+// skiprows = is number of rows to skip,names = is names of column in sheet 
+# Print the head of the DataFrame df1
+print(df1.head())
+
+# Parse the first column of the second sheet and rename the column: df2
+df2 = xls.parse(1, usecols=0, skiprows=1, names=['Country'])
+// usecols=0 takes index of column 
+
+
+
+SAS and STATA
+
+
+importing sas file as dataframe // from sas7bdat import SAS7BDAT
+
+to open the sas file // with SAS7BDAT('sales.sas7bdat') as file:
+    df_sas = file.to_data_frame()
+
+to open a stat/dta file // df = read_stata(filename)
+
+
+
+HDF5
+
+import the package // import h5py
+to read th file // data = h5py.File(file, 'r')
+to search the keys // for keys in data.keys():
+
+
+# Get the HDF5 group: group
+group = data['strain']  //assign the group things in the strain key 
+
+# Check out keys of group
+for key in group.keys():  // for each key in the group 
+    print(key)
+
+# Set variable equal to time series data: strain
+strain = data['strain']['Strain'].value   // since there is only one key in strain called strain hence the second strain nand .value give it a value
+
+# Set number of time points to sample: num_samples
+num_samples = 10000
+
+# Set time vector
+time = np.arange(0, 1, 1/num_samples)
+
+# Plot data
+plt.plot(time, strain[:num_samples])
+plt.xlabel('GPS Time (s)')
+plt.ylabel('strain')
+plt.show()
+
+
+
+
+MATLIP
+
+how to import  // import scipy.io
+load file into variable // mat = scipy.io.loadmat(filename)
+to print keys in the file // print(mat.keys())
+
+
+

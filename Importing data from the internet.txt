@@ -1,0 +1,100 @@
+to import from the web using pandas 
+
+to import the urlretrieve package // from urllib.request import urlretrieve
+
+url of file // url = 'http: and so forth'
+
+to get the download // urlretrieve(url,'new name .csv')
+
+to turn into df immediately // df = pd.read_csv(url,sep = ';')
+
+
+USING EXCEL
+
+# Import package
+import pandas as pd
+
+# Assign url of file: url
+url = 'http://s3.amazonaws.com/assets.datacamp.com/course/importing_data_into_r/latitude.xls'
+
+
+# Read in all sheets of Excel file: xl
+x1 = pd.read_excel(url,sheetname=None)  // this will produce a dictionary
+
+# Print the sheetnames to the shell
+print(x1.keys())  // if dictionary keys are the sheetnames
+
+# Print the head of the first sheet (using its name, NOT its index)
+print(x1['1700'].head())  // open the 1700 sheet but  only first 5 rows with head
+
+
+# Import package
+import requests
+
+# Specify the url: url
+url = "http://www.datacamp.com/teach/documentation"
+
+# Packages the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extract the response: text
+text = r.text
+
+
+
+
+# Import packages
+from urllib.request import urlopen, Request
+
+# Specify the url
+url = "http://www.datacamp.com/teach/documentation"
+
+# This packages the request
+request = Request(url)
+
+# Sends the request and catches the response: response
+response = urlopen(request)
+
+# Extract the response: html
+html = response.read()
+print(html)
+
+# Print the html
+print(text)
+SCRAPING THE WEB IN PYTHON (BEAUTFUL SOUP)
+
+to import beautiful soup package // from bs4 import BeautifulSoup 
+to create a BeautifulSoup object // soup = BeautifulSoup(html text)
+to   // soup.prettify()
+to get the text of the html // soup.text
+to get the title of the html = soup.title
+to find all the anchor tags <a> // a_tags = soup.find_all('a') * then for loop in a_tags to get individual anchor tags . To get just the link use // link.get('href')
+
+
+INTRO TO API AND JSON
+
+to import a json // import json
+to open the json file // with open("a_movie.json") as json_file:
+to load the json // json_data = json.load(json_file)
+to import API //  import requests
+to open the url with key // url = 'http://www.omdbapi.com?apikey=72bc447a&t=the+social+network' * this will open the movie social network
+to turn the request to a json // json_data = r.json()
+
+TWEEPY
+
+to import tweepy // import tweepy
+to authenticate tweepy // auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token,access_token_secret) 
+
+
+
+
+
+ 
+
+
+
+
+
+
+

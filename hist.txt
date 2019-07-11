@@ -1,0 +1,19 @@
+Matplotlib
+
+will take information  first must import matplotlib.pylot as plt
+
+plt.plot(x,y)
+plt.show()
+
+plt.barplot() plot a bar graph
+plt.xscale() will scale the x axis
+
+plt.hist( list , bins = number of bins which is split the data into )
+
+plt.title(this string will be title of graph)
+plt.xlabel(this is the string to label the x axis)
+plt.ylabel(this is the string to label the y axis)
+plt.yticks(a list) in this list we can set the scale of the y axis to load them instead of defaulkt va;ues
+
+plt.text()  // can set text in the graph to represent specific 
+plt.grid() // adds a grid layout to the graph

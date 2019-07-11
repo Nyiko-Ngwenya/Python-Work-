@@ -1,0 +1,9 @@
+import pandas // import pandas as pd
+creating dataframe // df = pd.read_csv('source of csv')
+displaying top 5 results // df.head()  * can add a number as parameter to show num of results
+displaying bottom 5 results // df.tail()  * can add a number as parameter to show num of results
+to view dtypes of columns  // df.info()
+to count occurence in df // df[column name ].value_counts()
+to show summary of results // df.describe()
+create boxplot in pandas // df.boxplot(column='col name',by = 'col name 2 ' )
+

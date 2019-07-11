@@ -1,0 +1,19 @@
+Columns must contain one variable 
+
+Melting turn column to rows
+
+to change columns so rows but not tidy // pd.melt(frame=dfname,id_vars,value_vars) 
+* id_vars = represent the columns of the data you do not want to melt,value_vars =  columns you do wish to melt,var_name='name of the prev column names stored', value_name='the values of the melted data'
+
+
+To pivot we turn unque values into seprate columns
+
+to unmelt or pivot //  pd.pivot_table(dfname , index=['Month', 'Day'], columns='measurement', values='reading',aggfunc=np.mean)
+*index = columns you dont want pivoted , columns is where you pivoting , values is the values of this column ,aggfunc is what to dow ith duplicate values
+
+to reset previous index in a melted data // pivoted_df.reset_index()
+
+
+
+
+

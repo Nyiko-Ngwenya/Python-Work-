@@ -1,0 +1,24 @@
+to work with sql alchemy // from sqlalcemy import create_engine
+to make the engine // engine = create_engine(sql name and db name)  // engine= create_engine('sqlite:///DB NAME')
+to find all the table names in the sql // table_names = engine.table_names()
+
+import pandas to store results in dataframe
+
+after creating engine connect to engine // con = engine.connect()
+
+to run(execute query) // rs = con.execute(SQL query in here )
+to create df from the result // df = pd.DataFrame(rs.fetchall())
+to have the column names from result in df // df.columns = rs.keys()
+to close conection // con.close()
+
+
+to run the quey and not close // with engine.connect as con:
+        rs = con.execute(SQL Query)
+        df = pd.DataFrame(rs.fetchall()) * fetchmany(size = 5) 
+        df.columns = rs.keys()
+
+relearn mysql queries(JOINS ,LIMIT,
+
+simpler way to make df // df = pd.read_sql_query(SQL QUERY,engine)
+
+
