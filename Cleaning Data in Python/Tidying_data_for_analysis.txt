@@ -14,6 +14,19 @@ to unmelt or pivot //  pd.pivot_table(dfname , index=['Month', 'Day'], columns='
 to reset previous index in a melted data // pivoted_df.reset_index()
 
 
+# Melt ebola: ebola_melt
+ebola_melt = pd.melt(ebola, id_vars=['Date', 'Day'], var_name='type_country', value_name='counts')
+print(ebola_melt.head(1))
+# Create the 'str_split' column
+ebola_melt['str_split'] = ebola_melt.type_country.str.split('_')
+print(ebola_melt.head(1))
+# Create the 'type' column
+ebola_melt['type'] = ebola_melt.str_split.str.get(0)
+print(ebola_melt.head(1))
+# Create the 'country' column
+ebola_melt['country'] = ebola_melt.str_split.str.get(1)
+
+
 
 
 

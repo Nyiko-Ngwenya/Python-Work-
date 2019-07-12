@@ -1,0 +1,28 @@
+to add dataframes togetther // concatenated = pd.concat([df1],[df2]) * to reset the index add ignore_index=True
+
+Combining columns of data // concatenated = pd.concat([df1],[df2],axis=1) * to reset the index add ignore_index=True, axis is 1 is columns and default is axis =0 is rows
+
+Golbbing
+
+Globbing is python pattern matching for file names 
+wildcards = *?  ,* is for strings , ? is for single character 
+ returns a list of filenames 
+
+import glob
+list_data= []
+csv_files = glob.glob('*.csv')
+for filename in csv_files:
+    data = pd.read_csv(filename)
+    list_data.append(data)
+
+merge data
+
+only merge data if you have same names that arent in the same order like how you wopuld on concat
+
+to merge dataframes // pd.merge(left=df1,right=df2,on=none,left_on ='df column name that matches',right_on = 'df column name that matches') * if column name of the matches is the same you add column 
+
+types of merges 
+one to one
+many to one
+many to many
+ 

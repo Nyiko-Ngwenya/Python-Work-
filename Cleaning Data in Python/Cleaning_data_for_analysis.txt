@@ -1,0 +1,8 @@
+to change column data type to string // df['col name'] = df['col name '].astype(str)
+
+you may want to change the dtype to category in some cases makes memory smaller 
+
+to change column data type to numeric // df['col name'] =pd.to_numeric(df['col name '],errors = 'coerce')
+* coerce will change dashes and unclean data to proper NaN.
+
+
