@@ -1,0 +1,26 @@
+when workign with for loops 
+
+//for i in the array/list:
+	print(i) // i in htis case is the iteration
+ but we dont have indexes if we wanted indexes as well when for looping 
+//for index, i in enumerate(list):
+	print(index +''+i)
+index will bring the index and i is the iteration
+
+to loop through a dictionary // for key,value in dictionary.items():
+	print(key + ''+ value)  // key is the key and value is the value, dictionary is unordered list so order of print wont match
+to loop through a array // for i in array:
+	print(i) // it will work
+to loop through a 2D array // for val in np.nditer(2darray):
+	print(val)  // this will printevery element of both lists
+
+to format in string //print('the capital of {} is {}'.format(key,value))  
+
+to loop through a dataframe  // for label,row in brics.iterrows():
+	print(label) //this will print the index
+	print(row) // this will print the row as a seies
+	print(row['column name']) // this will print the specific value
+	dataframe.loc[lab,"name_length"] = len(row['col name']) // this will create a new column named name_lenght and results will be the length of string value in col name row
+to create a column that does same as code above,code above uses toomuch resources //   dataframe['new col name'] = dataframe['column with results required'].apply(len) 
+**due to apply . if the method requires a parameter ie len(str) you can just call //apply(len)
+		 if the method doesnt require a parameter ie str.upper() // str.upper ** dtype.method
