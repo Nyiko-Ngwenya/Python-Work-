@@ -5,4 +5,85 @@ you may want to change the dtype to category in some cases makes memory smaller
 to change column data type to numeric // df['col name'] =pd.to_numeric(df['col name '],errors = 'coerce')
 * coerce will change dashes and unclean data to proper NaN.
 
+String manipulation
+
+re is regualr expressions
+
+is for numric values//  \d* eg 17
+
+is to add a dollar sign using escape character //   \$\d*  eg $17
+
+to add dollars sign and decimal 2 numbers //  \$\d*\.\d{2}  eg $17.00  the curly brackets is number of int char
+
+to add dollars sign and decimal //  ^\$\d*\.\d{2}$  eg $17.00  the curly brackets is number of int char
+
+^ tell the pattern to start at the beginnning whilst $ will tell it to match from the back
+
+we import regular expressions // import re
+to load the pattern // pattern = re.compile('regex pattern')
+to match the pattern // result = pattern.match('$17.89') * match will check have to add what you checking against the pattern
+to change our result to bool to read bool(result)
+
+
+Extracting nummbers in string
+
+to get all numbers in string // matches = re.findall('\d+', 'the recipe calls for 10 strawberries and 1 banana') \d+ *the plus tellls it that 10 is a number not 1 and 0 will return a list
+to use capital letters // '[A-Z]\w*'  * so w is for alphabet and d is for numbers
+
+Cleaning Data using functions
+
+to force value to NaN // np.nan
+
+EXAMPLE
+# Define recode_gender()
+def recode_gender(gender):
+
+    # Return 0 if gender is 'Female'
+    if gender == 'Female':
+        return 0
+    
+    # Return 1 if gender is 'Male'    
+    elif gender == 'Male':
+        return 1
+    
+    # Return np.nan    
+    else:
+        return np.nan
+
+# Apply the function to the sex column
+tips['recode'] = tips.sex.apply(recode_gender)
+
+# Print the first five rows of tips
+print(tips.head())
+
+
+HOW TO CLEAN REMOVE THE DOLLAR SIGN EXAMPLES
+tips['total_dollar_replace'] = tips.total_dollar.apply(lambda x: x.replace('$', ''))
+
+# Write the lambda function using regular expressions
+tips['total_dollar_re'] = tips.total_dollar.apply(lambda x: re.findall('\d+\.\d+', x)[0])
+
+to drop duplicates // df = df.drop_duplicates()
+
+when dealing with Nan have 3 solutions 
+-leaves as is
+-drop them
+-fill missing value
+
+
+to drop all NaN // dfNEW =  dfold.dropna()
+to fill NaN  // fillna()
+
+TWO METHODS TO ADD DEFAULT WEN NAN ONE IS SINGLE OTHER MULTIPLE COLUMN
+tips_nan[sex] = tips_nan[sex].fillna('missing') 
+
+tips_nan[['total bill' , 'sex']] = tips_nan[['total bill' ,'sex']].fillna('missing') 
+
+Assert is for checking statements if it returns without values its true , if false will raise error
+
+assert google.Close.notnull().all()
+to check if dataframe has missing values  // assert ebola.notnull().all().all() * first all is for all coulmns and second is for all df
+to see if all values in ebola are greater than 0 // assert (ebola >= 0).all().all()
+
+
 

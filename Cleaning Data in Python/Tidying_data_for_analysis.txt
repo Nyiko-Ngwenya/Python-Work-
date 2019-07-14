@@ -5,7 +5,7 @@ Melting turn column to rows
 to change columns so rows but not tidy // pd.melt(frame=dfname,id_vars,value_vars) 
 * id_vars = represent the columns of the data you do not want to melt,value_vars =  columns you do wish to melt,var_name='name of the prev column names stored', value_name='the values of the melted data'
 
-
+to change the column names // gapminder_melt.columns = ['country','year','life_expectancy' ]
 To pivot we turn unque values into seprate columns
 
 to unmelt or pivot //  pd.pivot_table(dfname , index=['Month', 'Day'], columns='measurement', values='reading',aggfunc=np.mean)

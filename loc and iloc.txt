@@ -4,6 +4,7 @@ import pandas as pd
 to create dataset // dataset = pd.DataFrame(dict)
 to change index // dataset.index['new index'] or dataset.index =  list equalling number of rows
 to use the first column as the index when calling csv // dataframe = pd.read_csv('path to csv',index_col =0)  
+to check what is first column name // df.columns[0]
 
 to create dataset from list 
 step 1. make a dictionary from list
