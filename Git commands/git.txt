@@ -1,0 +1,47 @@
+to add a file in staging area// git add fileName
+to check state of repo // git status
+to compare file // git diff filename
+
+results of git diff
+diff --git a/report.txt b/report.txt  //a means first version and b second
+index e713b17..4c0742a 100644
+--- a/report.txt  // --- means we removed lines
++++ b/report.txt  // +++ means we added
+@@ -1,4 +1,4 @@     // line tell us we (-1,4) means we removed from line1 and did 4 lines . (+1,4) means we added from line 1 and added 4 lines
+-# Seasonal Dental Surgeries 2017-18
++# Seasonal Dental Surgeries (2017) 2017-18
+
+ TODO: write executive summary. 
+
+to check whats going to be committed  // git diff -r HEAD fileName
+to commit changes // git commit -m "Message"
+change commit message // git commit --amend - m "new message"
+view repo history // git log
+to view specific file history // git log path/filename
+to view latest commit // git log then use first 4 of hash then git show first 4 hash
+to show klatest commit // git diff HEAD~1
+show who modified file // git annotate fileName
+show difference in commits // git diff ID1..ID2 *ID1 and ID2 are commit hashes
+to clean files in git // git clean -n
+to delete files in git staging // git clean -f
+to get the configuration // git config --list
+to change config values // git config --global user.email rep.loop@datacamp.com  * rep.loop@datacamp.com is the email
+to unstage the additions  // git reset HEAD
+to discard changes not staged but lose all work // git checkout -- filename
+changing commited files // git checkout 2242bd report.txt * 2242bd is ID , report.txt is the txt restore
+to show last commits to certain file // git log -3 report.txt
+difference in branches // git diff branch1..branch2
+to switch branches // git checkout branchName
+to see what branch you in // git branch * means u in 
+to remove files // git rm fileName
+to make and go in branch // git checkout -b branchName
+to merge 2 branches // git merge branch1 branch2
+to make new repo // git init project-name
+to make project/folder a repo // git init
+to make clone of repo // git clone url OWN REPO NAME
+to find out cloned repository originated from // git remote
+adding remotes // git remote add remote-name URL
+removing existing remote // git remote rm remote-name
+
+
+XB97JJYxY#7@Wh*$J1rM
