@@ -1,0 +1,83 @@
+# Zip the 2 lists together into one list of (key,value) tuples: zipped
+zipped = list(zip(list_keys,list_values))
+
+# Inspect the list using print()
+print(zipped)
+
+# Build a dictionary with the zipped list: data
+data = dict(zipped)
+
+# Build and inspect a DataFrame from the dictionary: df
+df = pd.DataFrame(data)
+print(df)
+
+
+Naming our columns 
+
+# Build a list of labels: list_labels
+list_labels = ['year','artist','song','chart weeks']
+
+# Assign the list of labels to the columns attribute: df.columns
+df.columns = list_labels
+
+Importing data
+
+sunspots= pd.read_csv(filepath,header=None,names=col_names,na_values = '-1')
+When importing csv  header=None makes sure the first row isnt taken as the header .
+names= col_names // col_names need to be a list of names matching number of columns
+thr na_values celects all values to be converted into NaN
+
+sunspots = pd.read_csv(filename, na_values= {'sunspots':['-1'])
+in this case we are telling it which row to look and change
+
+sunspots = pd.read_csv(filename, parse_dates=[[0,1,2]])
+this will tell pandas which column indexes are dates 
+
+sunspots.index = sunspots['year_month_day']
+sunspots.index.name = 'date' 
+
+to trim redundant columns 
+
+cols = ['col 1','col 2']
+df = df[cols]
+
+to write to a new file // pd.to_csv(new name ) or pd.to_excel()
+
+VISUALIZATION
+
+
+# Create a plot with color='red'
+df.plot(color='red')
+
+# Add a title
+plt.title('Temparature in Austin')
+
+# Specify the x-axis label
+plt.xlabel('Hours since mindnight August 1, 2010')
+
+# Specify the y-axis label
+plt.ylabel('Temperature (degrees F)')
+
+# Display the plot
+plt.show()
+
+
+PLOTTING DATAFRAMES
+
+# Plot all columns (default)
+df.plot()
+plt.show()
+
+# Plot all columns as subplots
+df.plot(subplots=True)
+plt.show()
+
+# Plot just the Dew Point data
+column_list1 = ['Dew Point (deg F)']   
+df[column_list1].plot()
+plt.show()
+
+# Plot the Dew Point and Temperature data, but not the Pressure data
+column_list2 = ['Temperature (deg F)','Dew Point (deg F)']
+df[column_list2].plot()
+plt.show()
