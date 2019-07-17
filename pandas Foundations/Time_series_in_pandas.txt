@@ -1,0 +1,10 @@
+import pandas as pd 
+
+sales = pd.read_csv('csv name',parse_dates = True,index_col = 'Date') * this will make the date coumn d
+index
+
+selecting single datetime by the company // sales.loc['2015-02-19 11:00:00','Company']
+selecting the whole day of rows// sales.loc['2015-2-5']
+
+Alternatives to string selection // sales.loc['February 5,2015'] or sales.loc['2015-Feb-5']
+

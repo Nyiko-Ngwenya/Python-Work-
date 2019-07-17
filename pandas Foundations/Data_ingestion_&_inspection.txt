@@ -1,3 +1,30 @@
+how to make a series // series = df['col name'] 
+to get values use // series.values
+
+
+to make a dataframe from dict // 
+
+import pandas as pd 
+data = {
+        'weekdays':[list of days ],
+        'city':[list of cities ]
+    }
+
+users = pd.dataframe(data)
+
+EXAMPLE 2
+
+weekdays = [list of weekdays ] 
+city = [list of cities]
+
+
+list labels = [the keys for my dict ] // unlike writing manually
+list_cols = [the lists that have the data ] // eg list_cols =[weekdays,city]
+
+zipped = list(zip(list_labels, list_cols ))
+
+zip will create 
+
 # Zip the 2 lists together into one list of (key,value) tuples: zipped
 zipped = list(zip(list_keys,list_values))
 
@@ -81,3 +108,6 @@ plt.show()
 column_list2 = ['Temperature (deg F)','Dew Point (deg F)']
 df[column_list2].plot()
 plt.show()
+
+
+
