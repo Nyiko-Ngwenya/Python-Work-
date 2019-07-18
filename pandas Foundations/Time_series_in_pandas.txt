@@ -19,6 +19,231 @@ if there is missing data from the other date time and you want to fill
 sales.reindex(eve , method= 'ffill') * filled from previous til the next entry
 sales.reindex(eve , method= 'bfill') *filled from last after NaN
 
+# Prepare a format string: time_format
+time_format = '%Y-%m-%d %H:%M'
+
+# Convert date_list into a datetime object: my_datetimes
+my_datetimes = pd.to_datetime(date_list, format=time_format)  
+
+# Construct a pandas Series using temperature_list and my_datetimes: time_series
+time_series = pd.Series(temperature_list, index=my_datetimes)
+
+
+EXAMPLE
+
+# Extract the hour from 9pm to 10pm on '2010-10-11': ts1
+ts1 = ts0.loc['2010-10-11 21:00:00':'2010-10-11 22:00:00']
+
+# Extract '2010-07-04' from ts0: ts2
+ts2 = ts0.loc['July 4th, 2010']
+
+# Extract data from '2010-12-15' to '2010-12-31': ts3
+ts3 = ts0.loc['12/15/2010':'12/31/2010']
+
+# Reindex without fill method: ts3
+ts3 = ts2.reindex(ts1.index)
+
+# Reindex with fill method, using forward fill: ts4
+ts4 = ts2.reindex(ts1.index, method= 'ffill')
+
+RESAMPLING
+
+Resampling must always to chained .
+
+Downsaploing is going from daily to weekly
+Upsampling is going from daily to hourly
+
+to get daily samples // daily = df.resample('D').mean()  , daily.loc['2015-2-2']
+to slice but only get certain col // sales.loc['day required','Units column']
+
+sales.resample('D).sum().max()
+
+T , min - minute
+H - Hour
+D - Daily
+B - Business day
+W - Weekly
+M - Monthly
+Q - Quarterly
+A - Annualy
+
+to resample using 2 weeks // sales.resample('2W').mean()  
+
+# Downsample to 6 hour data and aggregate by mean: df1
+df1 = df['Temperature'].resample('6H').mean()
+
+# Downsample to daily data and count the number of data points: df2
+df2 = df['Temperature'].resample('D').count()
+
+
+EXAMPLE
+
+# Extract temperature data for August: august
+august = df.loc['2010 August', 'Temperature']
+
+# Downsample to obtain only the daily highest temperatures in August: august_highs
+august_highs = august.resample('D').max()
+
+# Extract temperature data for February: february
+february = df.loc['2010 February ', 'Temperature']
+
+# Downsample to obtain the daily lowest temperatures in February: february_lows
+february_lows = february.resample('D').min()
+
+
+Rolling means (or moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends. 
+For example, with a Series hourly_data, hourly_data.rolling(window=24).mean() would compute new values for each hourly point, based on a 24-hour window stretching out behind each point. 
+The frequency of the output data is the same: it is still hourly. Such an operation is useful for smoothing time series data.
+
+
+# Extract data from 2010-Aug-01 to 2010-Aug-15: unsmoothed
+unsmoothed = df['Temperature']['August 1 2010':' August 15 2010']
+
+# Apply a rolling mean with a 24 hour window: smoothed
+smoothed = unsmoothed.rolling(window=24)
+
+# Create a new DataFrame with columns smoothed and unsmoothed: august
+august = pd.DataFrame({'smoothed':smoothed, 'unsmoothed':unsmoothed})
+
+# Plot both smoothed and unsmoothed data using august.plot().
+august.plot()
+plt.show()
+
+
+EXAMPLE
+
+# Extract the August 2010 data: august
+august = df['Temperature']['August 2010 ']
+
+# Resample to daily data, aggregating by max: daily_highs
+daily_highs = august.resample('D').max()
+
+# Use a rolling 7-day window with method chaining to smooth the daily high temperatures in August
+daily_highs_smoothed = daily_highs.rolling(window=7).mean()
+print(daily_highs_smoothed)
+
+
+SUBSTRING SETTING
+
+search for string that contain the search string // sales['product'].str.contains('ware')
+sales['product'].str.contains('ware').sum() // will count the number of trues as True is 1 and False is 0
+
+DATETIME METHODS
+
+will give hour of the day // sales['DAte'].dt.hour
+to change timezones // central.dt.tz_cnvert('US/Eastern')
+to set timezone // central = sales['Date'].dt.tz_localize('US/Central')
+
+have to localize then convert can combine both into one //
+sales['Date'].dt.tz_localize('US/Central').dt.tz_cnvert('US/Eastern')
+
+INTERPOLATE
+
+applying linear interpolation(filling in values) // population.resample('A').first().interpolate('linear')
+
+
+
+EXAMPLE of method chaining and filtering 
+
+# Strip extra whitespace from the column names: df.columns
+df.columns = df.columns.str.strip()
+
+# Extract data for which the destination airport is Dallas: dallas
+dallas = df['Destination Airport'].str.contains('DAL')
+
+# Compute the total number of Dallas departures each day: daily_departures
+daily_departures = dallas.resample('D').sum()
+
+# Generate the summary statistics for daily Dallas departures: stats
+stats = daily_departures.describe()
+
+EXAMPLE OF MISSING VALUES AND INTERPOLATION
+
+# Reset the index of ts2 to ts1, and then use linear interpolation to fill in the NaNs: ts2_interp
+ts2_interp = ts2.reindex(ts1.index).interpolate(how='linear')
+
+# Compute the absolute difference of ts1 and ts2_interp: differences 
+differences = np.abs(ts1-ts2_interp)
+
+# Generate and print summary statistics of the differences
+print(differences.describe())
+Time zones and conversion
+
+EXAMPLE Time zones and conversion
+
+# Build a Boolean mask to filter for the 'LAX' departure flights: mask
+
+
+mask = df['Destination Airport'] == 'LAX'
+
+# Use the mask to subset the data: la
+la = df[mask]
+
+# Combine two columns of data to create a datetime series: times_tz_none 
+times_tz_none = pd.to_datetime( la['Date (MM/DD/YYYY)'] + ' ' + la['Wheels-off Time'] )
+
+# Localize the time to US/Central: times_tz_central
+times_tz_central = times_tz_none.dt.tz_localize('US/Central')
+
+# Convert the datetimes from US/Central to US/Pacific
+times_tz_pacific = times_tz_central.dt.tz_convert('US/Pacific')
+
+
+VISUALIZING PANDAS TIME SERIES
+
+to plot a graph from date one to date 2 // sp500.loc['2012-4-1':'2012-4-7','col name '].plot(title = 'S&P 500')
+
+to change color of line // sp500.loc['2012-4-1','col name '].plot(title = 'S&P 500',style = 'k.-')
+**in style  ('k.-')
+first character is color (k is black)(b-blue,g-green,r -red,c - cyan)
+second character is marker (. is dot)(o-circle,*-star,s-square,+-plus)
+last is line style (- is solid)
+
+sp500.loc['2012',['Close','Volume']].plot() will have two lines
+
+SUBPLOTS ARE USED WHEN ONE ISNT EVIDENT WHEN DISPLAYING (overpower) THEN WE USE SUBPLOTS
+
+sp500.loc['2012',['Close','Volume']].plot(subplots=True)
+
+
+EXAMPLE OF Plotting time series, datetime indexing
+
+# Plot the raw data before setting the datetime index
+df.plot()
+plt.show()
+
+# Convert the 'Date' column into a collection of datetime objects: df.Date
+df.Date = pd.to_datetime(df['Date'])
+
+# Set the index to be the converted 'Date' column
+df.set_index('Date',inplace=True)
+
+# Re-plot the Ddf_dropped['Time']ataFrame to see that the axis is now datetime aware!
+df.plot()
+plt.show()
+
+EXAMPLE Plotting date ranges, partial indexing
+
+# Plot the summer data
+df.Temperature['2010-Jun':'2010-Aug'].plot()
+plt.show()
+plt.clf()
+
+# Plot the one week data
+df.Temperature['2010-06-10':'2010-06-17'].plot()
+plt.show()
+plt.clf()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
