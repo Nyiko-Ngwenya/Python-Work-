@@ -5,3 +5,26 @@ to get using loc // df[4,2] * 4 is row , 2 is col . * uses 0index
 print(election.iloc[x, y] == election.loc['Bedford', 'winner'])
 
 to make sure you get specfic col as df // df_new = df[['salt','eggs']]
+
+to make a series // df['col name']
+to slice a series // df['col name'][1:4] another way df['col name'][4]
+using .loc series // df.loc[:,'col name':'col name2'] * all rows some columns
+to get all columns but some rows // df.loc['Jan':'Apr',:]
+
+always starts with rows then columns when slicing
+ALWAYS STARTS WITH ROWS 
+
+get columns and some rows //df.loc['Mar':'May', 'salt':'spam']
+same as top but iloc// df.iloc[2:5,1:]
+
+using lists in place of slices // df.loc['Jan':'May',['eggs','spam']]
+and in iloc // df.iloc[[0,4,5], 0:2]
+
+
+
+
+
+
+
+
+
