@@ -1,0 +1,7 @@
+to get column value  // df[col][row] or df.col[row]
+to get value using loc // df['row','col']
+to get using loc // df[4,2] * 4 is row , 2 is col . * uses 0index
+
+print(election.iloc[x, y] == election.loc['Bedford', 'winner'])
+
+to make sure you get specfic col as df // df_new = df[['salt','eggs']]
