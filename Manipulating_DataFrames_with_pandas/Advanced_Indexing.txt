@@ -1,0 +1,7 @@
+pandas Data Structures
+
+Indexes : Sequence of labels
+Series : 1D array with Index
+Dataframes :2D array with series as columns
+
+
