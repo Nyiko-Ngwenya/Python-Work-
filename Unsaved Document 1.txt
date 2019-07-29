@@ -1,0 +1,57 @@
+AGE
+The as we can see from the boxplot graph expalining age , that more people do not have any form of mobile . This is represented at 0 , the have a fair young representative but have the oldest person aged at 100. This is understandable as old people arent as quick to trust technology and areny as technologically savy . From 2,3 (use mobile money) the box begins to become smaller showing a concentrated group but the age rage of the group is faily low with q3 and q1 being 45 and 25 showing they are still faily young. The oldest person not using mobile money is close to 80 seen at the whisker of box 2.
+
+GENDER
+More females are not using mobile money as shown in point 0 and 1. As we start to use mobile money the gap between the two genders subsides as seen in x = 2 where they only use mobile money.But when the use mobile money and other resources they both shoot up. Meaning more people(both sexes) dont want mobile money as their only financial asset. So they realise the importance of mobile money but need another fallback. This could mean if a bank were to solely rely on mobile money they would lose customers , but offering another service this could increase customers and revenue. This could also be due to the distrust people have with technology and prefer a little human interaction .
+
+MARITAL STATUS
+Married peple are the leading people in all categories ranging from no mobile money to using mobile money. This could mean majority of the data is majority is married if we looking at this graph. Single,Widowed and Divorced all have low uses of no mobile money. But the fact that statistically more people are single thank married this shows that this data is screwed in terms of married people. This could also explain why the genders increase together in the previous table as those might be the married people assuming its a hetrosexual marriage. But another observation is as the use of mobile money increases so does he frequency of the single people. This could be friends needing money as you dont have to ask a second party as married people do. Also spoiling significant potential lovers may also add to thsi as seen by people sending ewallets when dating . 
+
+LAND OWNERSHIP
+People who own land perform poorly in comparison to those who own land , butits not a hugwe indication of usage of mobile money . 
+
+EARN SALARIES/WAGES or SELLING
+
+People who earn a salary/wages are more likely to spend less and use mobile money. This might be bacuase they prefer to use the bank or other bank features . Whereas the people mostly using mobile money arent earning salaries . They make up the people who sell goods where you can see a direct corolation between the number of them and using mobile money. Street merchants might use mobile money to act as a way of payment instead of cash to the customer . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

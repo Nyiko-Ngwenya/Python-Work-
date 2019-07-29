@@ -2,3 +2,51 @@ kim jun gi
 
 Tchaikovsky - Lo Schiaccianoci: Valzer dei fiori 
 Mozart - Eine Kleine Nachtmusik, K. 525: I. Allegro
+
+1.# Printing the content of git_log_excerpt.csv
+# ... YOUR CODE FOR TASK 1 ...
+import pandas as pd 
+
+print(pd.read_csv('datasets/git_log_excerpt.csv'))
+
+
+2.# Loading in the pandas module
+# ... YOUR CODE FOR TASK 2 ...
+import pandas as pd
+# Reading in the log file
+git_log =  pd.read_csv('datasets/git_log.gz', sep='#' ,encoding='latin-1', header=None ,names = ['timestamp','author'])
+
+# Printing out the first 5 rows
+# ... YOUR CODE FOR TASK 2 ...
+print(git_log.head())
+
+
+3.# calculating number of commits
+number_of_commits = git_log['timestamp'].count()
+
+# calculating number of authors
+#number_of_authors = len(git_log['author'].unique())
+number_of_authors = git_log['author'].value_counts().count()
+# printing out the results
+print("%s authors committed %s code changes." % (number_of_authors, number_of_commits))
+
+
+4.# Identifying the top 10 authors
+top_10_authors = git_log['author'].value_counts().head(10)
+
+# Listing contents of 'top_10_authors'
+top_10_authors
+
+
+5.# converting the timestamp column
+# ... YOUR CODE FOR TASK 5 ...
+git_log['timestamp'] = pd.to_datetime(git_log['timestamp'],unit='s')
+#garbage =   pd.Timestamp(git_log['timestamp'])
+# summarizing the converted timestamp column
+# ... YOUR CODE FOR TASK 5 ...
+git_log['timestamp'].describe()
+
+
+
+6.
+
