@@ -1,0 +1,111 @@
+numpy are uniform and have one type
+
+to index 2D array // array[index0,index1] 
+to slice 2D array // array[:]
+
+MESHGRIDS 
+
+u = np.linespace(-2,2,3)  // this will generate 3 values from -2 to 2
+v = np.linespace(-1,1,5)
+
+X,Y = np,meshgrid(u,v)
+Z = X**2/25 + Y**2/4
+
+EXAMPLES OF MESHGRID
+
+
+# Import numpy and matplotlib.pyplot
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate two 1-D arrays: u, v
+u = np.linspace(41, -2, 2)
+v = np.linspace(21,-1 ,1)
+
+# Generate 2-D arrays from u and v: X, Y
+X,Y = np.meshgrid(u,v)
+
+# Compute Z based on X and Y
+Z = np.sin(3*np.sqrt(X**2 + Y**2)) 
+
+# Display the resulting image with pcolor()
+plt.pcolor(Z)
+plt.show()
+
+# Save the figure to 'sine_mesh.png'
+plt.savefig('sine_mesh.png')
+
+to create a color bar // plt.colorbar()
+plt.pcolor(Z,cmap = 'gray')** will change the images to be in color as pseudocolor and cmap will be in greyscale due to gray
+to fix empy spaces in graphs // plt.axis('tight')
+to have the axes labeled same as coordinates // plt.pcolor(X,Y,Z)
+to create contour // plt.contour(Z)
+to add number of contours // plt.contour(Z,30)
+to contour using meshgrid // plt.contour(X,Y,Z,30)
+
+
+EXAMPLES OF FILLED AND UNFILLED CONTOURS
+
+
+# Generate a default contour map of the array Z
+plt.subplot(2,2,1)
+plt.contour(X,Y,Z)
+
+# Generate a contour map with 20 contours
+plt.subplot(2,2,2)
+plt.contour(X,Y,Z,20)
+
+# Generate a default filled contour map of the array Z
+plt.subplot(2,2,3)
+plt.contourf(X,Y,Z)
+
+# Generate a default filled contour map with 20 contours
+plt.subplot(2,2,4)
+plt.contourf(X,Y,Z,20)
+
+# Improve the spacing between subplots
+plt.tight_layout()
+
+# Display the figure
+plt.show()
+
+
+
+EXAMPLES OF CMAPS AND COLORBARS
+
+
+# Create a filled contour plot with a color map of 'viridis'
+plt.subplot(2,2,1)
+plt.contourf(X,Y,Z,20, cmap='viridis')
+plt.colorbar()
+plt.title('Viridis')
+
+# Create a filled contour plot with a color map of 'gray'
+plt.subplot(2,2,2)
+plt.contourf(X,Y,Z,20, cmap='gray')
+plt.colorbar()
+plt.title('Gray')
+
+# Create a filled contour plot with a color map of 'autumn'
+plt.subplot(2,2,3)
+plt.contourf(X,Y,Z,20, cmap='autumn')
+plt.colorbar()
+plt.title('Autumn')
+
+# Create a filled contour plot with a color map of 'winter'
+plt.subplot(2,2,4)
+plt.contourf(X,Y,Z,20, cmap='winter')
+plt.colorbar()
+plt.title('Winter')
+
+# Improve the spacing between subplots and display them
+plt.tight_layout()
+plt.show()
+
+2D HISTOGRAMS
+
+plt.hist2d(x,y,bins=(10,20))
+plt.colorbar()
+plr.hexbin(x,y,gridsize=(15,10))
+
+

@@ -1,8 +1,0 @@
-this is how to create axes scale //plt.axes([0.05,0.05,0.425,0.9])
-
-this is how we get the graph in memeory //plt.plot(t,temperature,'r')
-
-to show the graph in memory // plt.show()
-to give graph a title // plt/title()
-
-the subplot() command takes // nrows,ncols,nsubplot

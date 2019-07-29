@@ -10,6 +10,7 @@ Alternatives to string selection // sales.loc['February 5,2015'] or sales.loc['2
 
 to slice during certain days and time 
 sales.loc['start day':'end day'] * 
+this will print current datetime // pd.to_datetime('today')
 eve = sales.loc['2015-2-16':'2015-2-20'] * this will print datetime list of days 
 from eve you need to reindex // sales.reindex(eve)
 this will print 20(8pm),21,22,23 but since some doesnt have data will make NaN

@@ -1,0 +1,128 @@
+this is how to create axes scale //plt.axes([0.05,0.05,0.425,0.9]) * must be in figure units 0-1,[x_lo,y_lo,width,height]
+
+this is how we get the graph in memeory //plt.plot(t,temperature,'r')
+to give label name // plt.xlabel
+to show the graph in memory // plt.show()
+to give graph a title // plt/title()
+
+the subplot() command takes // nrows,ncols,nsubplot * indexed from 1
+
+EXAMPLE OF HOW TO PLOT ON SAME GRAPH
+
+
+# Import matplotlib.pyplot
+import matplotlib.pyplot as plt
+
+# Plot in blue the % of degrees awarded to women in the Physical Sciences
+plt.plot(year, physical_sciences, color='blue')
+
+# Plot in red the % of degrees awarded to women in Computer Science
+plt.plot(year, computer_science, color='red')
+
+# Display the plot
+plt.show()
+
+
+EXAMP{LE OF HOW TO PLOT NEXT TO EACH OTHER
+
+
+# Create plot axes for the first line plot
+plt.axes([0.05,0.05,0.425,0.9])
+
+# Plot in blue the % of degrees awarded to women in the Physical Sciences
+plt.plot(year, physical_sciences, color='blue')
+
+# Create plot axes for the second line plot
+plt.axes([0.525,0.05,0.425,0.9])
+
+# Plot in red the % of degrees awarded to women in Computer Science
+plt.plot(year, computer_science, color='red')
+
+# Display the plot
+plt.show()
+
+
+to create better spacing in subplots // plt.tight_layout()
+SUBPLOTS ARE BETTER THAN AXES AND DO BETTER WITH SPACING LIKE EXAMPLE BELOW
+
+
+# Create a figure with 1x2 subplot and make the left subplot active
+plt.subplot(1,2,1) * one is wisth , height, and which plot to appear 
+
+# Plot in blue the % of degrees awarded to women in the Physical Sciences
+plt.plot(year, physical_sciences, color='blue')
+plt.title('Physical Sciences')
+
+# Make the right subplot active in the current 1x2 subplot grid
+plt.subplot(1,2,2)
+
+# Plot in red the % of degrees awarded to women in Computer Science
+plt.plot(year, computer_science, color='red')
+plt.title('Computer Science')
+
+# Use plt.tight_layout() to improve the spacing between subplots
+plt.tight_layout()
+plt.show()
+
+
+LIMITS WORK LIKE FILTERS 
+to create max(limits of our graphs) we use // axis([xmin,xmax,ymin,ymax]) * at once . 
+to do x and y separately // xlim([xmin,xmax])  eg xlim((-2,3)) or ([-2,3]) change x to y
+to save graphs as png // plt.savefig('xlim_and_ylim.png')
+
+EXAMPLE OF LIMITS
+
+# Plot the % of degrees awarded to women in Computer Science and the Physical Sciences
+plt.plot(year,computer_science, color='red') 
+plt.plot(year, physical_sciences, color='blue')
+
+# Add the axis labels
+plt.xlabel('Year')
+plt.ylabel('Degrees awarded to women (%)')
+
+# Set the x-axis range
+plt.xlim(1990,2010)
+
+# Set the y-axis range
+plt.ylim(0,50)
+
+# Add a title and display the plot
+plt.title('Degrees awarded to women (1990-2010)\nComputer Science (red)\nPhysical Sciences (blue)')
+plt.show()
+
+# Save the image as 'xlim_and_ylim.png'
+plt.savefig('xlim_and_ylim.png')
+
+must give each plot a lebel to create legend
+to create a legend // plt.legend(loc = 'upper right') * this is the location of the legend 
+
+annotate adds text to figure // plt.annotate()   * can also add arrows to show data , xy is the location and xy text is the text on location
+plt has style sheets 
+to check styles // plt.style
+to change styles // plt.style.use()
+
+
+EXAMPLE OF ANNOTATION
+
+
+# Plot with legend as before
+plt.plot(year, computer_science, color='red', label='Computer Science') 
+plt.plot(year, physical_sciences, color='blue', label='Physical Sciences')
+plt.legend(loc='lower right')
+
+# Compute the maximum enrollment of women in Computer Science: cs_max
+cs_max = computer_science.max()
+
+# Calculate the year in which there was maximum enrollment of women in Computer Science: yr_max
+yr_max = year[computer_science.argmax()]
+
+# Add a black arrow annotation
+plt.annotate('Maximum',xy=(yr_max,cs_max),xytext=(yr_max+5, cs_max+5),arrowprops=dict(facecolor='black'))
+
+# Add axis labels and title
+plt.xlabel('Year')
+plt.ylabel('Enrollment (%)')
+plt.title('Undergraduate enrollment of women')
+plt.show()
+
+
