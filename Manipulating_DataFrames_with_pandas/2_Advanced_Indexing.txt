@@ -1,0 +1,85 @@
+pandas Data Structures
+
+Indexes : Sequence of labels
+Series : 1D array with Index
+Dataframes :2D array with series as columns
+
+WORKING WITH CHANGING INDEXES
+
+
+# Create the list of new indexes: new_idx
+new_idx = [i.upper() for i in sales.index]
+
+# Assign new_idx to sales.index
+sales.index = new_idx
+
+# Print the sales DataFrame
+print(sales)
+
+WORKING WITH INDEX NAME LABELS
+
+
+# Assign the string 'MONTHS' to sales.index.name
+sales.index.name = 'MONTHS'
+
+# Print the sales DataFrame
+print(sales)
+
+# Assign the string 'PRODUCTS' to sales.columns.name 
+sales.columns.name = 'PRODUCTS' 
+
+# Print the sales dataframe again
+print(sales)
+
+HIERACHICAL INDEXING
+
+to set columns as index // df.set_index(['col name 1','col name2']) **this will create a tuple
+to sort the index // df.sort_index()
+
+to get info out of tuple index // df.loc[('col1 value','col2 value')] **this will use the tuple to search
+to get specific values //df.loc[('col1,'col2')],'columnName of value']
+to slice using index // df.loc['value1':'value2']
+to get a slice of two stock but same day // df.loc[(['col1','col2'],'colName'):)
+to get specific values // df.loc['value1':'value2']
+to get a slice of two stock but same day // df.loc[(['col1','col2'],'colName'),'spec col')
+or // df.loc[('ind1',['date1','date2']),:]
+or stocks.loc[(slice(None), slice('2016-10-03', '2016-10-04')), :]
+
+EXTRACTING DATA WIH MULTIINDEX
+
+
+# Print sales.loc[['CA', 'TX']]
+print(sales.loc[['CA','TX']])
+
+# Print sales['CA':'TX']
+print(sales['CA':'TX'])
+
+USING .LOC[] WITH NONUNIQUE INDEXES
+
+
+# Set the index to the column 'state': sales
+sales = sales.set_index(['state'])
+
+# Print the sales DataFrame
+print(sales)
+
+# Access the data from 'NY'
+print(sales.loc['NY'])
+
+
+INDEXING MULTIPLE LEVELS OF A MULTIINDEX
+
+
+# Look up data for NY in month 1: NY_month1
+NY_month1 = sales.loc[('NY',1)]
+
+# Look up data for CA and TX in month 2: CA_TX_month2
+CA_TX_month2 = sales.loc[(['CA','TX'],2),:]
+
+# Access the inner month index and look up data for all states in month 2: all_month2
+all_month2 = sales.loc[(slice(None),2),:]
+
+
+
+
+
