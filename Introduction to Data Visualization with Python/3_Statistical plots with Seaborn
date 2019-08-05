@@ -1,0 +1,116 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+to plot in seaborn // sns.lmplot(x='col 1',y='col 2',data=dataframe)
+to have different colors for differnt category // sns.lmplot(x='col 1',y='col 2',data=dataframe,hue='sex',palete='Set1') * hue is colors, palette is set of colors
+to get residual plot // sns.residplot(x='',y='',data=df,color='indianred')
+
+** hue works lioke group by
+
+EXAMPLE OF REGGRESSIONS IN HIGH ORDER
+
+# Generate a scatter plot of 'weight' and 'mpg' using red circles
+plt.scatter(x=auto['weight'], y=auto['mpg'], label='data', color='red', marker='o')
+
+# Plot in blue a linear regression of order 1 between 'weight' and 'mpg'
+sns.regplot(x='weight', y='mpg', data=auto, scatter=None, color='blue', label='order 1')
+
+# Plot in green a linear regression of order 2 between 'weight' and 'mpg'
+sns.regplot(x='weight', y='mpg', data=auto, order=2, color='green', label='order 2',scatter=None)
+
+# Add a legend and display the plot
+plt.legend(loc='upper right')
+plt.show()
+
+
+ANOTHER EXAMPLE Grouping linear regressions by hue
+
+
+# Plot a linear regression between 'weight' and 'hp', with a hue of 'origin' and palette of 'Set1'
+sns.lmplot(x='weight',y='hp',data=auto,hue='origin',palette='Set1')
+
+# Display the plot
+plt.show()
+
+
+
+EXAMPLE OF Grouping linear regressions by row or column
+
+#this will create seperate graphs
+'weight' and 'hp' grouped row-wise by 'origin'
+sns.lmplot(x='weight',y='hp',data=auto,row='origin')
+
+# Display the plot
+plt.show()
+
+
+To create a stripplot // sns.stripplot(y='col ',data=dataframe) **this is to create one dimensional graph 
+to let it plot different types // sns.stripplot(x='the types col',y='col',data=dataframe)
+to make sure thery not ontop of each other // jitter=True
+
+**but to see values better than jitter use swarm plots
+
+to make swarmplot // sns.swarmplot(x='col',y='col',data=dataframe)
+to group also use hue 
+to change orientation to vertical or horizontal use keyword orient='h'
+
+**box plots are for ranges (min,max,IQR )
+**violin show curve and distribution
+
+to make a violin plot // sns.violinplot(x='',y='',data=dataframe) 
+**to disable inner filling 
+
+to make violin with strip inside 
+sns.violinplot(x='',y='',data=dataframe,inner=None,color='lightgrey')
+sns.stripplot(x='day',y='col',data=dataframe,size=4,jitter=True)
+
+
+EXAMPLE OF CONSTRUCTING STRIP PLOT
+
+# Make a strip plot of 'hp' grouped by 'cyl'
+plt.subplot(2,1,1)
+sns.stripplot(x='cyl', y='hp', data=auto)
+
+# Make the strip plot again using jitter and a smaller point size
+plt.subplot(2,1,2)
+sns.stripplot(x='cyl', y='hp', data=auto, jitter=True, size=3)
+
+# Display the plot
+plt.show()
+
+
+ 
+EXAMPLE OF CONSTRUCTING SWARM PLOTS
+
+
+# Generate a swarm plot of 'hp' grouped horizontally by 'cyl'  
+plt.subplot(2,1,1)
+sns.swarmplot(x='cyl',y='hp',data=auto,orient='h')
+
+# Generate a swarm plot of 'hp' grouped vertically by 'cyl' with a hue of 'origin'
+plt.subplot(2,1,2)
+sns.swarmplot(x='hp',y='cyl',data=auto,orient='h',hue='origin')
+
+# Display the plot
+plt.show()
+
+
+
+
+EXAMPLE OF CONSTRUCTING VIOLIN PLOTS
+
+
+# Generate a violin plot of 'hp' grouped horizontally by 'cyl'
+plt.subplot(2,1,1)
+sns.violinplot(x='cyl', y='hp', data=auto)
+
+# Generate the same violin plot again with a color of 'lightgray' and without inner annotations
+plt.subplot(2,1,2)
+sns.violinplot(x='cyl', y='hp', data=auto,inner=None,color='lightgray')
+
+# Overlay a strip plot on the violin plot
+sns.stripplot(x='cyl',y='hp',data=auto,jitter=True,size=1.5)
+
+# Display the plot
+plt.show()
