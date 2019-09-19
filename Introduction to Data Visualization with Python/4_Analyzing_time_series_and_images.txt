@@ -1,0 +1,183 @@
+Multiple time series on common axes
+
+EXAMPLE 
+
+
+# Import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+# Plot the aapl time series in blue
+plt.plot(aapl, color='blue', label ='AAPL')
+
+# Plot the ibm time series in green
+plt.plot(ibm, color='green', label='IBM')
+
+# Plot the csco time series in red
+plt.plot(csco, color='red', label='CSCO')
+
+# Plot the msft time series in magenta
+plt.plot(msft, color='magenta', label ='MSFT')
+
+# Add a legend in the top left corner of the plot
+plt.legend(loc ='upper left')
+
+# Specify the orientation of the xticks
+plt.xticks(rotation=60)
+
+# Display the plot
+plt.show()
+
+
+
+Multiple time series slices (1)
+EXAMPLE
+
+
+# Plot the series in the top subplot in blue
+plt.subplot(2,1,1)
+plt.xticks(rotation=45)
+plt.title('AAPL: 2001 to 2011')
+plt.plot(aapl, color='blue')
+
+# Slice aapl from '2007' to '2008' inclusive: view
+view = aapl['2007':'2008']
+
+# Plot the sliced data in the bottom subplot in black
+plt.subplot(2,1,2)
+plt.xticks(rotation=45)
+plt.title('AAPL: 2007 to 2008')
+plt.plot(view , color='black')
+plt.tight_layout()
+plt.show()
+
+
+
+Multiple time series slices (2)
+EXAMPLE
+
+
+# Slice aapl from Nov. 2007 to Apr. 2008 inclusive: view
+view_1 = aapl['2007-11':'2008-04']
+
+# Plot the sliced series in the top subplot in red
+plt.subplot(2,1,1)
+plt.plot(view_1,color= 'red')
+plt.title('AAPL: Nov. 2007 to Apr. 2008')
+plt.xticks(rotation=45)
+
+
+# Reassign the series by slicing the month January 2008
+view_2 = aapl['2008-01']
+
+# Plot the sliced series in the bottom subplot in green
+plt.subplot(2,1,2)
+plt.plot(view_2,color= 'green')
+plt.title('AAPL: Jan. 2008')
+plt.xticks(rotation=45)
+
+# Improve spacing and display the plot
+plt.tight_layout()
+plt.show()
+
+
+Plotting an inset view
+EXAMPLE
+
+
+# Slice aapl from Nov. 2007 to Apr. 2008 inclusive: view
+view = aapl['2007-11':'2008-04']
+
+# Plot the entire series 
+plt.plot(aapl)
+plt.xticks(rotation=45)
+plt.title('AAPL: 2001-2011')
+
+# Specify the axes
+plt.axes((0.25, 0.5, 0.35, 0.35) )
+
+# Plot the sliced series in red using the current axes
+plt.plot(view,color='red')
+plt.xticks(rotation=45)
+plt.title('2007/11-2008/04')
+plt.show()
+
+
+Plotting moving averages
+EXAMPLE
+
+
+# Plot the 30-day moving average in the top left subplot in green
+plt.subplot(2,2,1)
+plt.plot(mean_30, c='green')
+plt.plot(aapl, 'k-.')
+plt.xticks(rotation=60)
+plt.title('30d averages')
+
+# Plot the 75-day moving average in the top right subplot in red
+plt.subplot(2,2,2)
+plt.plot(mean_75, c= 'red')
+plt.plot(aapl, 'k-.')
+plt.xticks(rotation=60)
+plt.title('75d averages')
+
+# Plot the 125-day moving average in the bottom left subplot in magenta
+plt.subplot(2, 2, 3)
+plt.plot(mean_125, c= 'magenta')
+plt.plot(aapl, 'k-.')
+plt.xticks(rotation=60)
+plt.title('125d averages')
+
+# Plot the 250-day moving average in the bottom right subplot in cyan
+plt.subplot(2, 2, 4)
+plt.plot(mean_250, 'cyan')
+plt.plot(aapl, 'k-.')
+plt.xticks(rotation=60)
+plt.title('250d averages')
+
+# Display the plot
+plt.show()
+
+
+
+Original & rescaled histograms
+
+orig = plt.imread('image.jgp') // this is how we load in a image
+pixels = orig.flatten() // this will take 2Da array to 1D array
+plt.hist(pixels,bins=256,range(0,256),normed=True,color='blue',alpha=0.3) // range is the interval of availible values ,normed rescales anthing under histogram to 1 , alpha makes histogram lines partially visible.
+plt.show() // to see image
+
+minval,maxval = orig.min(),orig.max()
+
+to rescale the image 
+
+rescaled=(255/(maxval-minval)) * (pixels-minval)
+rescaledmin,rescaledmax = rescaled.min(),rescaled.max()
+
+plt.imshow(rescaled)
+plt.axis('off')
+plt.show()
+
+plt.hist(pixels,bins=256,range(0,256),normed=True,color='blue',alpha=0.3)
+
+plt.twinx()
+
+orig_cdf,bin,patches = plt.hist(pixels,cumulative=True,bins=256,range=(0,256),normed=True,color='red',alpha=0.3)
+
+plt.title('Image histogram and CDF')
+plt.xlim((0,255))
+plt.show()
+
+
+new_pixels = np.interp(pixels,bins[:-1],orig_cdf*255)
+new = new_pixels.reshape(orig.shape)
+plt.imshow(new)
+plt.axis('off')
+plt.title('Equalized image')
+plt.show()
+
+
+
+
+
+
+
