@@ -1,0 +1,15 @@
+Continuous Variables
+
+Quantities that can take any value not just discrete.
+
+Probability density function
+-continous analog to PMF
+-is area under the graph 
+
+Normal Distribution is area under the graph witr only one single peak
+-mean is middle of grpah , std is how wide the peak is .
+
+THESE ARE PARAMETERS AND DONT MATCH THE MEAN AND STD THATS CALCULATED
+
+
+
