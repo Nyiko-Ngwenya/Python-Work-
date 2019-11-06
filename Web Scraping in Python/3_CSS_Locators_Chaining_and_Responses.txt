@@ -1,0 +1,13 @@
+CSS Locator 
+
+replaces / with >
+
+dont need to have the first foward slash
+
+Xpath = '/html/body/div'
+CSS Locator = 'html>body>div'
+
+replace the number of the element
+
+Xpath = '//div/p[2]'
+CSS Locator = 'div > p:nth-of-type(2)

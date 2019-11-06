@@ -1,0 +1,56 @@
+wildcard *
+
+example xpath = "/html/body/*" // this will select all the elements on generation
+example xpath = "/html/body//*" //selects all elements from all future generations of the body element
+
+
+contains will get all the tags that contain the keyword passed
+
+example xpath = '//*[contains(@class, "class-1")]' // this will get all tags that have class-1 in their classes
+
+to get the class of a specific tag 
+
+example xpath = '/html/body/div/p[2]/@class'
+
+EXAMPLE OF USING CONTAINS
+
+# Create an XPath string to select p element by class
+xpath = '//p[contains(@class,"class-1")]'
+
+# Print out select text
+print_element_text( xpath )
+
+START USING SCRAPPY
+
+from scrappy import Selector
+
+sel = Selector(text =html)
+
+sel.xpath("//p") will work as xpath and bring a list of selector list
+
+to gte the actual tags only use the extract method 
+
+EXAMPLE sel.xpath("//p").extract()
+
+
+we can also link and add more to xpath 
+
+example sel.xpath( '//div' ).xpath( './span/p[3]' ) == sel.xpath('//div/span/p[3]')
+
+EXAMPLE OF REQUESTING A SELECTOR
+
+# Import a scrapy Selector
+from scrapy import Selector
+
+# Import requests
+import requests
+
+# Create the string html containing the HTML source
+html = requests.get( url ).content
+
+# Create the Selector object sel from html
+sel = Selector( text= html )
+
+# Print out the number of elements in the HTML document
+print( "There are 1020 elements in the HTML document.")
+print( "You have found: ", len( sel.xpath('//*') ) )

@@ -1,0 +1,9 @@
+xpath is the way to navigate html in code 
+
+example xpath = '/html/body/div[2]' // this will go to the second div in the body tag . Not 0 indexed
+
+// in xpath means all generations in that parent element
+
+example xpath = '//table' // it will go to all the table attritubes
+example xapath = '/html/body/div[2]//table' // this will go to all tables within the second Div tag
+example xpath = '//div[@id="uid"]' // this will access all divs that have a id attribute uid

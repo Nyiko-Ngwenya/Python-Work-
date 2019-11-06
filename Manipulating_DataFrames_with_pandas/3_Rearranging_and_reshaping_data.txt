@@ -1,0 +1,3 @@
+to pivot is to take values in a column and make them actual columns
+
+how to pivot // df.pivot(index='col to index',columns='the column to break', values= 'what to assign per column')
